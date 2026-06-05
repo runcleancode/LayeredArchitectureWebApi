@@ -1,30 +1,35 @@
+using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Entities.Models;
-using Repositories.EFCore;
+using Services.Contracts;
 
-
-
-
-namespace WebApi.Controllers
+namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/books")]
     public class BooksController : ControllerBase
     {
         //Dependency Injection
-        private readonly RepositoryContext _context;
+        private readonly IServiceManager _manager;
 
-        public BooksController(RepositoryContext context)
+        public BooksController(IServiceManager manager)
         {
-            _context = context;
+            _manager = manager;
         }
 
         [HttpGet]
         public IActionResult GetAllBooks()
         {
-            var books = _context.Books.ToList();
-            return Ok(books);
+            try
+            {
+                var books = _manager.BookService.GetAllBooks(false);
+                return Ok(books);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpGet("{id:int}")]
@@ -32,9 +37,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                var book = _context
-          .Books
-          .Find(id);
+                var book = _manager
+          .BookService
+          .GetOneBookById(id, false);
 
                 if (book is null)
                     return NotFound();
@@ -56,8 +61,8 @@ namespace WebApi.Controllers
                 if (book is null)
                     return BadRequest();
 
-                _context.Add(book);
-                _context.SaveChanges();
+                _manager.BookService.CreateOneBook(book);
+
                 return StatusCode(201, book);
             }
             catch (System.Exception ex)
@@ -70,23 +75,12 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entity = _context
-     .Books
-     .Where(b => b.Id.Equals(id))
-     .SingleOrDefault();
+                if (book is null)
+                    return BadRequest(); //400
 
-                if (entity is null)
-                    return NotFound();
+                _manager.BookService.UpdateOneBook(id, book, true);
 
-                if (id != book.Id)
-                    return BadRequest();
-
-                entity.Title = book.Title;
-                entity.Price = book.Price;
-
-                _context.SaveChanges();
-
-                return Ok(book);
+                return NoContent(); //204
 
             }
             catch (System.Exception ex)
@@ -100,23 +94,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entity = _context
-                .Books
-                .Where(b => b.Id.Equals(id))
-                .SingleOrDefault();
-
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        StatusCode = 404,
-                        message = $"Book with id {id} was not found"
-                    });
-
-                _context.Books.Remove(entity);
-                _context.SaveChanges();
+                _manager.BookService.DeleteOneBook(id, false);
 
                 return NoContent();
-
             }
             catch (System.Exception ex)
             {
@@ -130,16 +110,17 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entity = _context
-                .Books
-                .Where(b => b.Id.Equals(id))
-                .SingleOrDefault();
+                var entity = _manager
+                .BookService
+                .GetOneBookById(id, true);
 
                 if (entity is null)
                     return NotFound();
 
                 bookPatch.ApplyTo(entity);
-                _context.SaveChanges();
+                _manager
+                .BookService
+                .UpdateOneBook(id, entity, true);
 
                 return NoContent();
             }

@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace Repositories.Contracts
 {
+    //Tüm sistemdeki entities için CRUD işlemlerinin genel yapısını belirleyen interface. Generic verildi çünkü o kısma istenen entity gelecek.
     public interface IRepositoryBase<T>
     {
         //CRUD METHODS
