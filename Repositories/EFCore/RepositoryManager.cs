@@ -18,9 +18,9 @@ namespace Repositories.EFCore
         //IOC KAYDI
         public IBookRepository Book => _bookRepository.Value;
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

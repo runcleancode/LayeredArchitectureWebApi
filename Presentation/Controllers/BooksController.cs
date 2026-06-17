@@ -1,6 +1,4 @@
 using Entities.DataTransferObjects;
-using Entities.Exceptions;
-using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
@@ -20,60 +18,73 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllBooks()
+        public async Task<IActionResult> GetAllBooksAsync()
         {
-            var books = _manager.BookService.GetAllBooks(false);
+            var books = await _manager.BookService.GetAllBooksAsync(false);
             return Ok(books);
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult GetOneBook([FromRoute(Name = "id")] int id)
+        public async Task<IActionResult> GetOneBookAsync([FromRoute(Name = "id")] int id)
         {
-            var book = _manager.BookService.GetOneBookById(id, false);
+            var book = await _manager.BookService.GetOneBookByIdAsync(id, false);
 
             return Ok(book);
         }
 
         [HttpPost]
-        public IActionResult CreateOneBook([FromBody] Book book)
+        public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
         {
-            if (book is null)
+            if (bookDto is null)
                 return BadRequest();
 
-            _manager.BookService.CreateOneBook(book);
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            var book = await _manager.BookService.CreateOneBookAsync(bookDto);
 
             return StatusCode(201, book);
         }
         [HttpPut("{id:int}")]
-        public IActionResult UpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
+        public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
         {
 
             if (bookDto is null)
                 return BadRequest(); //400
 
-            _manager.BookService.UpdateOneBook(id, bookDto, true);
+            // ModelState holds the validation status. If invalid, it is automatically serialized into a JSON error response.
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            await _manager.BookService.UpdateOneBookAsync(id, bookDto, true);
 
             return NoContent(); //204
         }
         [HttpDelete("{id:int}")]
-        public IActionResult DeleteOneBook([FromRoute(Name = "id")] int id)
+        public async Task<IActionResult> DeleteOneBookAsync([FromRoute(Name = "id")] int id)
         {
-            _manager.BookService.DeleteOneBook(id, false);
+            await _manager.BookService.DeleteOneBookAsync(id, false);
 
             return NoContent();
         }
 
         [HttpPatch("{id:int}")]
-        public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<Book> bookPatch)
+        public async Task<IActionResult> PartiallyUpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
-            var entity = _manager
-            .BookService
-            .GetOneBookById(id, true);
+            if (bookPatch is null)
+                return BadRequest();
 
-            bookPatch.ApplyTo(entity);
-            _manager
-            .BookService
-            .UpdateOneBook(id, new BookDtoForUpdate(entity.Id, entity.Title, entity.Price), true);
+            var result = await _manager.BookService.GetOneBookForPatchAsync(id, true);
+
+            //Sistemde dönüşmüş geçerli entity nesnesinin değiştiği yer burası bu nedenle buradan sonra kontrol işlemi eklendi . TryValidateModel
+            bookPatch.ApplyTo(result.bookDtoForUpdate, ModelState);
+
+            TryValidateModel(result.bookDtoForUpdate);
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            await _manager.BookService.SaveChangesForPatchAsync(result.bookDtoForUpdate, result.book);
 
             return NoContent(); //204
         }
