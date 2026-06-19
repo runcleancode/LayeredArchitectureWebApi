@@ -4,18 +4,18 @@ using Presentation.ActionFilters;
 using Services.Contracts;
 using WebApi.Extensions;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
-builder.Services.AddControllers(config =>
-{
-    config.RespectBrowserAcceptHeader = true;
-    config.ReturnHttpNotAcceptable = true;
-})
+builder
+    .Services.AddControllers(config =>
+    {
+        config.RespectBrowserAcceptHeader = true;
+        config.ReturnHttpNotAcceptable = true;
+    })
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     .AddNewtonsoftJson()
     .AddXmlDataContractSerializerFormatters()
@@ -33,6 +33,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 builder.Services.ConfigureActionFilters();
+builder.Services.ConfigureCors();
 
 var app = builder.Build();
 
@@ -51,6 +52,8 @@ if (app.Environment.IsProduction())
 {
     app.UseHsts();
 }
+
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 

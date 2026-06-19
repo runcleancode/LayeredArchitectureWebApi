@@ -10,6 +10,7 @@ namespace WebApi.Extensions
     {
         public static IMvcBuilder AddCustomCsvFormatter(this IMvcBuilder mvcBuilder) =>
             mvcBuilder.AddMvcOptions(config =>
-                config.OutputFormatters.Add(new CsvOutputFormatter()));
+                config.OutputFormatters.Add(new CsvOutputFormatter())
+            );
     }
 }

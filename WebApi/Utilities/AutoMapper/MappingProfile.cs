@@ -9,8 +9,7 @@ namespace WebApi.Utilities.AutoMapper
         //Mapping hangi entity ve hangi kopya image i olan dto arasında dönüşüm olacağını belirler.
         public MappingProfile()
         {
-            CreateMap<BookDtoForUpdate, Book>().ReverseMap
-            ();
+            CreateMap<BookDtoForUpdate, Book>().ReverseMap();
             CreateMap<Book, BookDto>();
             CreateMap<BookDtoForInsertion, Book>();
         }

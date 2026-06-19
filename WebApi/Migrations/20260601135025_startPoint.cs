@@ -16,15 +16,17 @@ namespace WebApi.Migrations
                 name: "Books",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table
+                        .Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.InsertData(
                 table: "Books",
@@ -33,15 +35,15 @@ namespace WebApi.Migrations
                 {
                     { 1, 75m, "Karagöz ve Hacivat" },
                     { 2, 175m, "Mesnevi" },
-                    { 3, 375m, "Devlet" }
-                });
+                    { 3, 375m, "Devlet" },
+                }
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Books");
+            migrationBuilder.DropTable(name: "Books");
         }
     }
 }
