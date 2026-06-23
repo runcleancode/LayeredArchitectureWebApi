@@ -89,3 +89,23 @@
 2026-06-18 21:19:35.4156 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
 2026-06-18 21:21:55.4542 Info AppDomain Shutting down. LogFactory closing...
 2026-06-18 21:21:55.4588 Info LogFactory has been disposed.
+2026-06-23 21:14:53.0390 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-06-23 21:14:53.0493 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-23 21:14:53.0889 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-06-23 21:16:20.2690 Info AppDomain Shutting down. LogFactory closing...
+2026-06-23 21:16:20.2743 Info LogFactory has been disposed.
+2026-06-23 21:18:47.7813 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-06-23 21:18:47.7900 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-23 21:18:47.8282 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-06-23 21:19:23.8855 Info AppDomain Shutting down. LogFactory closing...
+2026-06-23 21:19:23.8910 Info LogFactory has been disposed.
+2026-06-23 21:20:46.1574 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-06-23 21:20:46.1666 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-23 21:20:46.2033 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-06-23 21:23:42.7966 Info AppDomain Shutting down. LogFactory closing...
+2026-06-23 21:23:42.8004 Info LogFactory has been disposed.
+2026-06-23 21:31:46.5905 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-06-23 21:31:46.6002 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-06-23 21:31:46.6400 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-06-23 21:32:32.1659 Info AppDomain Shutting down. LogFactory closing...
+2026-06-23 21:32:32.1712 Info LogFactory has been disposed.
