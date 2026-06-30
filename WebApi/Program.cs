@@ -34,6 +34,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 });
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
+builder.Services.ConfigureDataShaper();
 
 var app = builder.Build();
 
