@@ -17,29 +17,30 @@ builder.Services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
 })
-    .AddXmlDataContractSerializerFormatters()
     .AddNewtonsoftJson()
+    .AddXmlDataContractSerializerFormatters()
+    .AddCustomCsvFormatter()
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
-// .AddCustomCsvFormatter();
-
-builder.Services.ConfigureSqlContext(builder.Configuration);
-builder.Services.ConfigureRepositoryManager();
-builder.Services.ConfigureServiceManager();
-builder.Services.ConfigureLoggerService();
-builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.ConfigureMapping();
-builder.Services.AddCustomMediaTypes();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
 });
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
+builder.Services.ConfigureLoggerService();
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddSwaggerGen();
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShaper();
+builder.Services.AddCustomMediaTypes();
 builder.Services.ConfigureLinkBuilders();
+builder.Services.ConfigureVersioning();
+builder.Services.ConfigureMapping();
 
 var app = builder.Build();
 
@@ -60,7 +61,6 @@ if (app.Environment.IsProduction())
 }
 
 app.UseHttpsRedirection();
-
 app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
@@ -68,3 +68,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
