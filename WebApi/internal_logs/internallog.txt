@@ -370,3 +370,48 @@
 2026-07-24 19:25:03.3013 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
 2026-07-24 19:26:19.7100 Info AppDomain Shutting down. LogFactory closing...
 2026-07-24 19:26:19.7150 Info LogFactory has been disposed.
+2026-07-26 18:31:40.9944 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 18:31:41.0060 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 18:31:41.0354 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 18:44:15.5095 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 18:44:15.5152 Info LogFactory has been disposed.
+2026-07-26 18:45:17.4383 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 18:45:17.4465 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 18:45:17.4727 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 18:48:41.5740 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 18:48:41.5802 Info LogFactory has been disposed.
+2026-07-26 18:56:19.1626 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 18:56:19.1711 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 18:56:19.1979 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 18:58:29.7736 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 18:58:29.7790 Info LogFactory has been disposed.
+2026-07-26 19:01:03.9090 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 19:01:03.9180 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 19:01:03.9455 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 19:01:13.9779 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 19:01:13.9801 Info LogFactory has been disposed.
+2026-07-26 19:02:41.9650 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 19:02:41.9734 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 19:02:41.9992 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 19:03:53.3746 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 19:03:53.3784 Info LogFactory has been disposed.
+2026-07-26 19:08:17.6500 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 19:08:17.6588 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 19:08:17.6876 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 19:15:08.3905 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 19:15:08.3966 Info LogFactory has been disposed.
+2026-07-26 19:23:21.4371 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 19:23:21.4457 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 19:23:21.4725 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 19:28:32.2956 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 19:28:32.3000 Info LogFactory has been disposed.
+2026-07-26 19:29:27.0617 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 19:29:27.0730 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 19:29:27.1027 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 19:31:24.5824 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 19:31:24.5874 Info LogFactory has been disposed.
+2026-07-26 19:37:59.0992 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2026-07-26 19:37:59.1070 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.1.3.5285. Product version: 6.1.3+7f18a90739535f5ddc71c48e0fa28c59e5ee8969. GlobalAssemblyCache: False
+2026-07-26 19:37:59.1342 Info Configuration initialized: TargetNames=logfile, ConfigItems=12, AutoReload=true, FilePath=/Users/macbook/Desktop/WebAPIs/AspNetCore/Chapter5/bsStoreApp/WebApi/nlog.config
+2026-07-26 19:48:30.5313 Info AppDomain Shutting down. LogFactory closing...
+2026-07-26 19:48:30.5361 Info LogFactory has been disposed.

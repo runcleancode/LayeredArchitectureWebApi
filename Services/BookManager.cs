@@ -102,5 +102,13 @@ namespace Services
 
             return entity;
         }
+
+        //Implemented for Version 2
+        public async Task<List<Book>> GetAllBooksAsync(bool trackChanges)
+        {
+            var books = await _manager.Book.GetAllBooksAsync(trackChanges);
+
+            return books;
+        }
     }
 }
