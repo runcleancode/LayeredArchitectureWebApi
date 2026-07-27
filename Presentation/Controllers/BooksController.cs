@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Entities.DataTransferObjects;
 using Entities.RequestFeatures;
+using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,8 @@ namespace Presentation.Controllers
     [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/books")]
+    // [ResponseCache(CacheProfileName = "5Mins")]
+    // [HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 80)] 
     public class BooksController : ControllerBase
     {
         //Dependency Injection
@@ -26,6 +29,7 @@ namespace Presentation.Controllers
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         [HttpHead]
         [HttpGet(Name = "GetAllBooksAsync")]
+        // [ResponseCache(Duration = 60)]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParameters)
         {
             //HttpContext ifadesi apiye gelen istekle birlikte controllerbase tarafindan otomatik olarak bir paket seklinde uretilir ve otomatik enjecke edilir. Bu nedenle herhangi bir yerden parametre seklinde alinmadi veya newlenmedi.
