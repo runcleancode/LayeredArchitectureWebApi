@@ -16,6 +16,7 @@ builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
+    config.CacheProfiles.Add("5mins", new CacheProfile() { Duration = 300 });
 })
     .AddNewtonsoftJson()
     .AddXmlDataContractSerializerFormatters()
@@ -41,6 +42,8 @@ builder.Services.AddCustomMediaTypes();
 builder.Services.ConfigureLinkBuilders();
 builder.Services.ConfigureVersioning();
 builder.Services.ConfigureMapping();
+builder.Services.ConfigureResponseCaching();
+builder.Services.ConfigureHttpCacheHeaders();
 
 var app = builder.Build();
 
@@ -62,6 +65,8 @@ if (app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
+app.UseResponseCaching();
+app.UseHttpCacheHeaders();
 
 app.UseAuthorization();
 
