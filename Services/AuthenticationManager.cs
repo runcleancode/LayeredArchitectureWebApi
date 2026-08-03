@@ -94,7 +94,7 @@ namespace Services
         {
             var claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Name, _user.UserName)
+                new Claim(ClaimTypes.Name, _user.UserName),
             };
             var roles = await _userManager.GetRolesAsync(_user);
 
@@ -168,9 +168,8 @@ namespace Services
             if (user is null ||
                 user.RefreshToken != tokenDto.RefreshToken ||
                 user.RefreshTokenExpiryTime <= DateTime.Now)
-            {
                 throw new RefreshTokenBadRequestException();
-            }
+
             _user = user;
 
             return await CreateToken(populateExp: false);

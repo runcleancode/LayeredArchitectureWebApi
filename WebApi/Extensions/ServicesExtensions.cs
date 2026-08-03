@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
 using Presentation.ActionFilters;
 using Presentation.Controllers;
 using Repositories.Contracts;
@@ -184,7 +185,40 @@ namespace WebApi.Extensions
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = jwtSettings["ValidIssuer"],
                 ValidAudience = jwtSettings["ValidAudience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+            });
+        }
+
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Company",
+                    Version = "v1",
+                    Description = "Company ASP.NET Core Web.API",
+                    TermsOfService = new Uri("https://github.com/runcleancode"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Hakan Özdemir",
+                        Email = "runcleancode@gmail.com"
+                    }
+                });
+                s.SwaggerDoc("v2", new OpenApiInfo { Title = "Company", Version = "v2" });
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                s.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+                {
+                    [new OpenApiSecuritySchemeReference("Bearer", document)] = new List<string>()
+                });
+
+
             });
         }
     }
