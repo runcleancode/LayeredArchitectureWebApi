@@ -15,6 +15,7 @@ namespace Presentation.Controllers
     [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/books")]
+    [ApiExplorerSettings(GroupName = "v1")]
     // [ResponseCache(CacheProfileName = "5Mins")]
     // [HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 80)] 
     public class BooksController : ControllerBase
@@ -27,6 +28,7 @@ namespace Presentation.Controllers
             _manager = manager;
         }
 
+        [Authorize]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         [HttpHead]
         [HttpGet(Name = "GetAllBooksAsync")]
@@ -60,7 +62,7 @@ namespace Presentation.Controllers
             return Ok(book);
         }
 
-        [Authorize(Roles = "Admin,Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost(Name = "CreateOneBookAsync")]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
@@ -70,7 +72,7 @@ namespace Presentation.Controllers
             return StatusCode(201, book);
         }
 
-        [Authorize(Roles = "Admin,Editor")]
+        [Authorize(Roles = "Editor, Admin")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
@@ -89,7 +91,7 @@ namespace Presentation.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = "Admin,Editor")]
+        [Authorize(Roles = "Editor, Admin")]
         [HttpPatch("{id:int}")]
         public async Task<IActionResult> PartiallyUpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
