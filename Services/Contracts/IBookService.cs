@@ -21,5 +21,6 @@ namespace Services.Contracts
 
         //For Version 2
         Task<List<Book>> GetAllBooksAsync(bool trackChanges);
+        Task<IEnumerable<Book>> GetAllBooksWithDetailsAsync(bool trackChanges);
     }
 }

@@ -11,6 +11,7 @@ namespace Repositories.EFCore
     public class RepositoryContext : IdentityDbContext<User>
     {
         public DbSet<Book> Books { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public RepositoryContext(DbContextOptions options) : base(options)
         {
