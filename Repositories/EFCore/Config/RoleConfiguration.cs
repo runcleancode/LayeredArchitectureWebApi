@@ -11,18 +11,21 @@ namespace Repositories.EFCore.Config
             builder.HasData(
                 new IdentityRole
                 {
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
+                    Id = "8581D1F1-3F53-4D37-BE8B-BDC4037B21D7",
+                    Name = "User",
+                    NormalizedName = "USER"
                 },
                 new IdentityRole
                 {
+                    Id = "DF085BBB-938B-4158-B2E9-DAEDD8C2FEC3",
                     Name = "Editor",
                     NormalizedName = "EDITOR"
                 },
                 new IdentityRole
                 {
-                    Name = "User",
-                    NormalizedName = "USER"
+                    Id = "6E254A2A-1CB7-443A-BE9E-B3758E2B7571",
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
                 }
             );
         }
